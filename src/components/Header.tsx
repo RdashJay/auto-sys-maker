@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { MapPin, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -5,8 +6,10 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import TripPlanDialog from "./TripPlanDialog";
 
 const Header = () => {
+  const [tripDialogOpen, setTripDialogOpen] = useState(false);
   const navLinks = [
     { name: "Home", href: "#home" },
     { name: "Destinations", href: "#destinations" },
@@ -36,7 +39,7 @@ const Header = () => {
                 {link.name}
               </a>
             ))}
-            <Button>Plan Your Trip</Button>
+            <Button onClick={() => setTripDialogOpen(true)}>Plan Your Trip</Button>
           </nav>
 
           {/* Mobile Navigation */}
@@ -57,12 +60,14 @@ const Header = () => {
                     {link.name}
                   </a>
                 ))}
-                <Button className="mt-4">Plan Your Trip</Button>
+                <Button className="mt-4" onClick={() => setTripDialogOpen(true)}>Plan Your Trip</Button>
               </nav>
             </SheetContent>
           </Sheet>
         </div>
       </div>
+      
+      <TripPlanDialog open={tripDialogOpen} onOpenChange={setTripDialogOpen} />
     </header>
   );
 };
