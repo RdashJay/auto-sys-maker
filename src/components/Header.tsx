@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { MapPin, Menu } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -39,8 +40,11 @@ const Header = () => {
                 {link.name}
               </a>
             ))}
-            <Button onClick={() => setTripDialogOpen(true)}>Plan Your Trip</Button>
-          </nav>
+          <Button onClick={() => setTripDialogOpen(true)}>Plan Your Trip</Button>
+          <Link to="/auth">
+            <Button variant="outline">Login</Button>
+          </Link>
+        </nav>
 
           {/* Mobile Navigation */}
           <Sheet>
@@ -61,6 +65,9 @@ const Header = () => {
                   </a>
                 ))}
                 <Button className="mt-4" onClick={() => setTripDialogOpen(true)}>Plan Your Trip</Button>
+                <Link to="/auth">
+                  <Button variant="outline" className="w-full">Login</Button>
+                </Link>
               </nav>
             </SheetContent>
           </Sheet>
